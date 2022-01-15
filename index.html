@@ -1,48 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/09c32469d9.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/09c32469d9.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <link rel="stylesheet" href="style.css" />
     <title>Document</title>
-</head>
-<body>
-    
-    <header>
-        <span>Dashboard</span>
-    </header>  
-    
-    <nav>
-        <a href="index.html"  class="border"><img src="https://btu.edu.ge/wp-content/uploads/2021/06/BTU_Logo_new-1.svg" alt="logo" > </a>
-        <div class='sider'>
-            <ul>
-                <li>
-                    <a href="users.html" ><i class="fas fa-users"></i></a>
-                    <span class="hover-text" >Users</span>
-                </li>
-                <li>
-                    <a href="photos.html"><i class="fas fa-photo-video"></i></a>
-                    <span class="hover-text">Photos</span>
-                </li>
-            </ul> 
+  </head>
+  <body>
+    <div class="content">
+      <header>
+        <a href="index.html" class="logo-link"
+          ><img
+            src="https://btu.edu.ge/wp-content/uploads/2021/06/BTU_Logo_new-1.svg"
+            alt="logo"
+            class="logo"
+          />
+        </a>
+        <a> <span>Dashboard</span> </a>
+      </header>
+
+      <nav>
+        <div class="sidebar">
+          <ul class="navbar-nav">
+            <li id="get-users" class="nav-item">
+              <a href="users.html" class="sidebar-link">
+                <i class="fas fa-users"></i>
+
+                <span class="link-text">Users</span>
+              </a>
+            </li>
+            <li id="get-images" class="nav-item">
+              <a href="photos.html" class="sidebar-link">
+                <i class="fas fa-photo-video"></i>
+
+                <span class="link-text">Photos</span>
+              </a>
+            </li>
+          </ul>
         </div>
-    </nav>
+      </nav>
 
-    <main>
+      <main>
         <h1 class="index-content">Welcome to the Final exam</h1>
-    </main>
-
-  
-    
-</body>
-</html> 
-
-
-
-
-
-
-
-
+      </main>
+    </div>
+  </body>
+</html>

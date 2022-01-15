@@ -1,51 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/09c32469d9.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/09c32469d9.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="style.css" />
     <title>Document</title>
-</head>
-<body>
-    
-    <header>
-        <span>Users</span>
-    </header>  
-    
-    <nav>
-        <a href="index.html"  class="border"><img src="https://btu.edu.ge/wp-content/uploads/2021/06/BTU_Logo_new-1.svg" alt="logo" > </a>
-        <div class='sider'>
-            <ul>
-                <li>
-                    <a href="users.html" ><i class="fas fa-users"></i></a>
-                    <span class="hover-text" >Users</span>
-                </li>
-                <li>
-                    <a href="photos.html"><i class="fas fa-photo-video"></i></a>
-                    <span class="hover-text">Photos</span>
-                </li>
-            </ul> 
-        </div>
-    </nav>
+  </head>
+  <body  onload="fetchUsers()">
+    <div class="content">
+      <header>
+        <a href="index.html" class="logo-link"
+          ><img
+            src="https://btu.edu.ge/wp-content/uploads/2021/06/BTU_Logo_new-1.svg"
+            alt="logo"
+            class="logo"
+          />
+        </a>
+        <a> <span>Users</span> </a>
+      </header>
 
-    <main id='main'>
-        <section id="control-center" class="index-content">
-            <button id="get-btn">GET Data</button>
-        </section>
+      <nav>
+        <div class="sidebar">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a href="users.html" class="sidebar-link">
+                <i class="fas fa-users"></i>
+
+                <span class="link-text">Users</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="photos.html" class="sidebar-link">
+                <i class="fas fa-photo-video"></i>
+
+                <span class="link-text">Photos</span>
+              </a>
+            </li>
+          </ul>
+     
+    </div>
+
+    <main>
+      <div id="user-modal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <div id="modal-main"
+             iclass="modal-main"></div>
+        </div>
+      </div>
+
+
+      <div class="user-content">
+        <ol id="users" class="users">
+        </ol>
+      </div>
+      
     </main>
 
-    <script src="/users.js"></script>
-  
-    
-</body>
-</html> 
+    <script>
+
+    const userList =  document.getElementById("users");
+    const modal= document.getElementById("user-modal")
+    const modalContent= document.getElementById("modal-main")
+    const  close = document.getElementsByClassName("close")[0];
+   
+    const URL = 'https://jsonplaceholder.typicode.com/users';
+    let userData=[];
+
+    async function fetchUsers() {
+    const response = await fetch(URL)
+    const users = await response.json();
+    return users;
+    }
+
+    function showModal(id){
+      user = userData[id-1]; 
+      console.log(user);
+      modal.style.display = "block";
+      modalContent.innerHTML = (`<h2 class="modal-header">${user.name}</h2>
+      <hr> 
+      <div class="modal-buttons">
+        <button class="modal-button">Show <span> ${user.name}'s </span> Todos</button/>
+          <button class="modal-button">Show <span> ${user.name}'s </span> Albums</button/>
+
+        </div>
+      `)
 
 
+    }
+
+    fetchUsers().then(users => {
+      userData = users;
+      console.log(userData)
+      users.map((user,index)=>{
+        let id=user.id;
+        let node = document.createElement('li');
+        node.appendChild(document.createTextNode(user.name));
+        node.classList.add("user");
+        node.addEventListener("click", () =>showModal(id));
+        userList.appendChild(node); 
+      })
+    });
 
 
+    close.addEventListener('click',closeModal);
+    function closeModal(){
+      modal.style.display = "none";
+    }
 
-
-
-
+</script>
+  </body>
+</html>
