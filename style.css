@@ -1,0 +1,82 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+
+/******************************** HEADER **********************************/
+header{
+    background-color: #38404b;
+    height: 64px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;   
+}
+/**** HEADER CONTENT *****/
+header span{
+    color: white;
+    font-size: 15px;
+    padding-right: 15px;
+    
+}
+
+
+/****************************** SIDE MENU ******************************/
+
+.sider{
+    display: flex;
+    flex-direction: column;
+    width: 60px;
+    background-color: #38404b;
+    height: calc(100vh - 64px);
+    align-items: center;  
+    margin-top: -25px;
+    padding-top: 30px;
+    position: fixed;
+    
+} 
+
+nav img{
+    width: 60px;
+    padding-bottom: 30px;
+    margin-top: -69px; 
+    
+}
+nav a i{
+    font-size: 25px;
+    padding-bottom: 30px;
+    color: white;
+}
+.border{
+    border-top: 0.5px solid grey;
+    display:list-item;
+}
+
+/****** HOVER *****/
+.sider:hover {
+    width: 256px;
+    padding-left: 15px;
+    display: block;
+    color: white; 
+    position: fixed;
+    z-index: 2;
+    display: block; 
+    
+}
+.hover-text{
+    display: none;
+}
+
+
+
+/************** MAIN CONTENT ******************/
+
+main .index-content{
+    position: absolute;
+    top: 100px;
+    left: 80px;
+}
+
+
